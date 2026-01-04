@@ -1,0 +1,20 @@
+[
+    {
+    "id":"hacha_de_piedra",
+    "nombre":"Hacha de piedra",
+    "descripcion":"Corta madera, pero no mucho.",
+    "capacidades":[
+        {"tipo":"Ataque", "danio":5},
+        {"tipo":"Talar", "potencia":10}
+    ]
+    },
+
+    {
+    "id":"espada_de_piedra",
+    "nombre":"Espada de piedra",
+    "descripcion":"No es la mejor, aunque peor es nada.",
+    "capacidades":[
+        {"tipo":"Ataque","danio":15}
+    ]
+    }
+]
