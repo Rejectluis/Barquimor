@@ -68,7 +68,7 @@ jugador.aprenderHabilidad(HabilidadFactory.crearHabilidad("Comercio"));
 int hab = jugador.habilidades.Count >= 1 ? jugador.habilidades.Count : 0;
 
 var habAtaque = jugador.obtenerHabilidad<HabilidadAtaque>();
-var habComercio = jugador.obtenerHabilidad<HabilidadComercio>();
+var habComercio = jugador.obtenerHabilidad<HabilidadComercio>(); 
 var habAgricultura = jugador.obtenerHabilidad<HabilidadAgricultura>();
 
 Console.WriteLine($"Habilidades aprendidas: {hab} - {habAtaque.tipo} {habAtaque.descripcion} ");
