@@ -1,4 +1,5 @@
 ﻿using Barquimor.Core;
+using Barquimor.Items.Items;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,8 @@ namespace Barquimor.Entidades.Plantillas
 {
     internal abstract class PersonajeBase : IActualizar
     {
-        public Dictionary<Type, Object> habilidades;
+        public Dictionary<Type, Object> habilidades {  get; set; }
+        public Dictionary<string, Item> objetos { get; set; }
         public string nombre { get; set; }
         protected int vida { get; set; }
         protected Texture2D skin { get; set; }
@@ -29,6 +31,7 @@ namespace Barquimor.Entidades.Plantillas
             this.renderizador = renderizador;
             this.colision = colision;
             this.habilidades = new Dictionary<Type, Object>();
+            this.objetos = new Dictionary<string, Item>();
         }
 
         public virtual void ejecutarRender()

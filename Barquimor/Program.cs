@@ -22,6 +22,7 @@ IDibujar dibujo = new RenderizadoEstandarLogic();
 IColisionar colision = new ColisionarRectanguloLogic();
 
 Herrero CarlosElHerrero = new Herrero("Carlos el herrero",comercio, dibujo, colision);
+Jugador jugador = new Jugador("Rejectluis", dibujo, colision);
 
 CarlosElHerrero.activarComercio();
 CarlosElHerrero.desactivarComercio();
@@ -31,34 +32,33 @@ CarlosElHerrero.ejecutarColision();
                                 // Probando la arquitecutra del sistema de items//
 ItemManager.cargarItems("JSON/Herramientas.JSON");
 
-if(ItemManager.catalago.TryGetValue("hacha_de_piedra", out Item hacha))
+if(ItemManager.catalago.TryGetValue("espada_de_piedra", out Item hacha))
 {
-    Console.WriteLine($"[HACHA]: {hacha.nombre}");
-    Console.WriteLine($"[HACHA]: {hacha.descripcion}");
-    Console.WriteLine($"[HACHA CAPACIDADES]: {hacha.capacidades.Count}");
+    //Console.WriteLine($"[HACHA]: {hacha.nombre}");
+    //Console.WriteLine($"[HACHA]: {hacha.descripcion}");
+    //Console.WriteLine($"[HACHA CAPACIDADES]: {hacha.capacidades.Count}");
 
     foreach (var capacidad in hacha.capacidades)
     {
-        Console.WriteLine($"Tipo de lógica: {capacidad.GetType().Name}");
+        //Console.WriteLine($"Tipo de lógica: {capacidad.GetType().Name}");
 
         if (capacidad is CapacidadAtaque ataque)
         {
-            Console.WriteLine($"      * Daño detectado: {ataque.danio}");
+            //Console.WriteLine($"      * Daño detectado: {ataque.danio}");
         }
 
         if (capacidad is CapacidadTalar talar)
         {
-            Console.WriteLine($"      * Potencia detectada: {talar.potencia}");
+            //Console.WriteLine($"      * Potencia detectada: {talar.potencia}");
         }
     }
+    jugador.objetos.Add("hacha_de_piedra", hacha);
 }
 else
 {
     Console.WriteLine("ERROR: No se encontró el ID 'hacha_de_piedra' en el catálogo.");
 }
                                  // Probando la arquitecutra del sistema de items//
-
-Jugador jugador = new Jugador("Rejectluis",dibujo, colision);
 
 Console.WriteLine($"Nombre del jugador: {jugador.nombre}");
 jugador.aprenderHabilidad(HabilidadFactory.crearHabilidad("Ataque"));
@@ -75,6 +75,11 @@ Console.WriteLine($"Habilidades aprendidas: {hab} - {habAtaque.tipo} {habAtaque.
 Console.WriteLine($"{habComercio.tipo} {habComercio.descripcion}");
 Console.WriteLine($"{habAgricultura.tipo} {habAgricultura.descripcion}");
 
+Console.WriteLine("Items del jugador:");
+int itemsInventario = jugador.objetos.Count;
+Console.WriteLine($"Total: {itemsInventario}");
+Console.WriteLine($"{jugador.objetos["hacha_de_piedra"].nombre}: {jugador.objetos["hacha_de_piedra"].descripcion}");
 
-
-
+habAtaque.ejecutarHabilidad();
+habComercio.ejecutarHabilidad();
+habAgricultura.ejecutarHabilidad();

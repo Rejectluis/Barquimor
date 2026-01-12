@@ -10,13 +10,13 @@ namespace Barquimor.Items.Items
     /*  Esta clase es representa a las instancias de los items. Es decir, las cosas   
      *  que el jugador lleva en la mano o inventario. El método "tieneCapacidad<T>()"
      *  trata de identificar qué capacidades tiene un item, si puede atacar, talar o 
-     *  comerse
+     *  comerse.
      *  
      *  
      *  1) El archivo JSON: Es solo texto: "potencia": 10.
      *
      *  2) En DTOCapacidad: El JsonConvert lee el 10 y lo guarda en la 
-     *  propiedad potencia. En este momento, el objeto es solo "un montón de datos".
+     *  propiedad potencia. En este momento, el objeto es solo un montón de datos.
      *
      *  3) En ItemManager: El if detecta que el tipo es "Talar". Entonces hace: 
      *     new CapacidadTalar(capDTO.potencia).

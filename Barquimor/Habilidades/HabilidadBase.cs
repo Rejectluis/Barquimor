@@ -21,5 +21,7 @@ namespace Barquimor.Habilidades
             this.experiencia = 0;
         }
 
+        // Añadir aquí un método de subir nivel y sumado de experiencia 
+
     }
 }

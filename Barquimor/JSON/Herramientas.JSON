@@ -9,12 +9,17 @@
     ]
     },
 
-    {
-    "id":"espada_de_piedra",
-    "nombre":"Espada de piedra",
-    "descripcion":"No es la mejor, aunque peor es nada.",
-    "capacidades":[
-        {"tipo":"Ataque","danio":15}
+  {
+    "id": "espada_de_piedra",
+    "nombre": "Espada de piedra",
+    "descripcion": "No es la mejor, aunque peor es nada.",
+    "capacidades": [
+      {
+        "tipo": "Ataque",
+        "danio": 15
+      }
     ]
-    }
+  }
+
+
 ]
