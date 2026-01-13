@@ -20,7 +20,7 @@ namespace Barquimor.Items.Items
 
             foreach (var dto in listaRaw)
             {
-                Item nuevo = new Item { 
+                Item nuevoItem = new Item { 
                     id = dto.id,
                     nombre = dto.nombre, 
                     descripcion = dto.descripcion
@@ -28,17 +28,13 @@ namespace Barquimor.Items.Items
 
                 foreach (var capDTO in dto.capacidades)
                 {
-                    if(capDTO.tipo == "Ataque")
-                    {
-                        nuevo.capacidades.Add(new CapacidadAtaque(capDTO.danio));
-                    }
+                    if(capDTO.tipo.Equals("Ataque")) {nuevoItem.capacidades.Add(new CapacidadAtaque(capDTO.danio));}
 
-                    if(capDTO.tipo == "Talar")
-                    {
-                        nuevo.capacidades.Add(new CapacidadTalar(capDTO.potencia));
-                    }
+                    if(capDTO.tipo.Equals("Talar")) {nuevoItem.capacidades.Add(new CapacidadTalar(capDTO.potencia));}
+
+                    if (capDTO.tipo.Equals("Comer")) {nuevoItem.capacidades.Add(new CapacidadComestible(capDTO.energia));}
                 }
-                catalago.Add(dto.id, nuevo);
+                catalago.Add(dto.id, nuevoItem);
             }
         }
     }
