@@ -9,7 +9,7 @@ namespace Barquimor.Componentes.Ataque
 {
     internal class AtaqueJugadorLogic : IAtacar
     {
-        public void atacar()
+        public virtual void atacar()
         {
             Console.WriteLine("¡Soy el jugador, y estoy atacando con mi esapda mamalona!");
         }

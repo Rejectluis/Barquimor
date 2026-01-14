@@ -12,7 +12,6 @@ namespace Barquimor.Items.Capacidades
      * acepta todos los tipos de datos posibles de los objetos JSON, como 
      * potencia (para hachas),daño (para espadas), energía (para comidas), etc.
      * 
-     * Sirve únicamente no se confunda.
      */
     internal class DTOCapacidad
     {

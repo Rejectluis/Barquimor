@@ -32,7 +32,7 @@ namespace Barquimor.Items.Items
 
                     if(capDTO.tipo.Equals("Talar")) {nuevoItem.capacidades.Add(new CapacidadTalar(capDTO.potencia));}
 
-                    if (capDTO.tipo.Equals("Comer")) {nuevoItem.capacidades.Add(new CapacidadComestible(capDTO.energia));}
+                    if (capDTO.tipo.Equals("Comestible")) {nuevoItem.capacidades.Add(new CapacidadComestible(capDTO.energia));}
                 }
                 catalago.Add(dto.id, nuevoItem);
             }

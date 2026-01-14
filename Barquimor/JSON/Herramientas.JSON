@@ -14,12 +14,20 @@
     "nombre": "Espada de piedra",
     "descripcion": "No es la mejor, aunque peor es nada.",
     "capacidades": [
-      {
-        "tipo": "Ataque",
-        "danio": 15
-      }
+        {"tipo": "Ataque","danio": 15}
+      ]
+  },
+
+  {
+    "id": "maiz_base",
+    "nombre": "Maíz cristalino",
+    "descripcion": "Puedes cocinarlo y recargar energía. También puedes procesarlo y obtener harina.",
+    "capacidades": [
+      {"tipo": "Comestible","energia": 5}
     ]
+
   }
+
 
 
 ]
