@@ -37,7 +37,7 @@ CarlosElHerrero.obtenerHabilidad<HabilidadAgricultura>().ejecutarHabilidad();
 Console.WriteLine("\n");
                                 // Probando la arquitecutra del sistema de items//
 ItemManager.cargarItems("JSON/Herramientas.JSON");
-string clave = "hacha_de_piedra";
+string clave = "calabaza_base";
 ItemManager.agregarItem(clave, jugador);
 
                                  // Probando la arquitectura de habilidades//
