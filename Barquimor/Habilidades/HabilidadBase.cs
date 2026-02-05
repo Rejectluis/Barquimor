@@ -12,7 +12,10 @@ namespace Barquimor.Habilidades
         public string descripcion { get; set; }
         public int nivel { get; set; }
         public int experiencia { get; set; }
+        public HabilidadBase()
+        {
 
+        }
         public HabilidadBase(string tipo, string descripcion)
         {
             this.tipo = tipo;

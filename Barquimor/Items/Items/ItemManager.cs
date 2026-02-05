@@ -1,4 +1,6 @@
-﻿using Barquimor.Items.Capacidades;
+﻿using Barquimor.Entidades;
+using Barquimor.Entidades.Plantillas;
+using Barquimor.Items.Capacidades;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -37,5 +39,30 @@ namespace Barquimor.Items.Items
                 catalago.Add(dto.id, nuevoItem);
             }
         }
+
+        public static void agregarItem(string clave, PersonajeBase jugador)
+        {
+            if (ItemManager.catalago.TryGetValue(clave, out Item item))
+            {
+                Console.WriteLine($"[ITEM]: {item.nombre}");
+                Console.WriteLine($"[ITEM]: {item.descripcion}");
+                Console.WriteLine($"[ITEM CAPACIDADES]: {item.capacidades.Count}");
+
+                foreach (var capacidad in item.capacidades)
+                {
+                    Console.WriteLine($"Tipo de lógica: {capacidad.GetType().Name}");
+
+                    if (capacidad is CapacidadAtaque ataque) { Console.WriteLine($"      * Daño detectado: {ataque.danio}"); } //Console.WriteLine($"      * Daño detectado: {ataque.danio}");
+                    if (capacidad is CapacidadTalar talar) { Console.WriteLine($"      * Potencia detectada: {talar.potencia}"); } //Console.WriteLine($"      * Potencia detectada: {talar.potencia}");
+                    if (capacidad is CapacidadComestible comestible) { Console.WriteLine($"      * energía detectada: {comestible.energia}"); } //Console.WriteLine($"      * energía detectada: {comestible.energia}");
+                }
+                jugador.objetos.Add(clave, item);
+            }
+            else
+            {
+                Console.WriteLine($"ERROR: No se encontró el ID {clave} en el catálogo.");
+            }
+        }
+
     }
 }

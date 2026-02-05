@@ -2,12 +2,19 @@
 using Barquimor.Componentes.Ataque;
 using Barquimor.Componentes.Comercio;
 using Barquimor.Core;
+using Barquimor.Entidades;
+using Barquimor.Entidades.Plantillas;
 using Barquimor.Habilidades.Agricultura;
 using Barquimor.Habilidades.Ataques;
 using Barquimor.Habilidades.Comercios;
+using Barquimor.Items.Capacidades;
+using Barquimor.Items.Items;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 

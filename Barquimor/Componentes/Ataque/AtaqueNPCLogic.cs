@@ -11,7 +11,7 @@ namespace Barquimor.Componentes.Ataque
     {
         public void atacar()
         {
-            Console.WriteLine("¡Soy el Rey Arturo, y estoy atacando con mi esapda Excalibur!");
+            Console.WriteLine("¡Soy el Rey Arturo, y estoy atacando con mi espada Excalibur!");
         }
     }
 }

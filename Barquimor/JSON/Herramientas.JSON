@@ -1,12 +1,12 @@
 [
     {
-    "id":"hacha_de_piedra",
-    "nombre":"Hacha de piedra",
-    "descripcion":"Corta madera, pero no mucho.",
-    "capacidades":[
-        {"tipo":"Ataque", "danio":5},
-        {"tipo":"Talar", "potencia":10}
-    ]
+      "id":"hacha_de_piedra",
+      "nombre":"Hacha de piedra",
+      "descripcion":"Corta madera, pero no mucho.",
+      "capacidades":[
+          {"tipo":"Ataque", "danio":5},
+          {"tipo":"Talar", "potencia":10}
+      ]
     },
 
   {
@@ -20,12 +20,23 @@
 
   {
     "id": "maiz_base",
-    "nombre": "Maíz cristalino",
+    "nombre": "Maíz",
     "descripcion": "Puedes cocinarlo y recargar energía. También puedes procesarlo y obtener harina.",
     "capacidades": [
-      {"tipo": "Comestible","energia": 5}
+      {
+        "tipo": "Comestible",
+        "energia": 5
+      }
     ]
+  },
 
+  {
+    "id": "calabaza_base",
+    "nombre": "Calabaza",
+    "descripcion": "La auyama puede consumirse, secar la cáscara, o usar las semillas para sembrar más. \nSu cosecha se da durante cualquier época del año, aunque se recomienda hacerlo en primavera o a inicio de temporada de lluvias. Demora 20 días en dar cosecha.",
+    "capacidades": [
+      {"tipo": "Comestible", "energia": 8}
+    ]
   }
 
 

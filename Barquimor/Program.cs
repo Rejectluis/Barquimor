@@ -30,35 +30,19 @@ CarlosElHerrero.ejecutarRender();
 CarlosElHerrero.ejecutarColision();
 
 CarlosElHerrero.aprenderHabilidad(HabilidadFactory.crearHabilidad("Ataque"));
+CarlosElHerrero.aprenderHabilidad(HabilidadFactory.crearHabilidad("Agricultura"));
 CarlosElHerrero.obtenerHabilidad<HabilidadAtaque>().ejecutarHabilidad();
+CarlosElHerrero.obtenerHabilidad<HabilidadAgricultura>().ejecutarHabilidad();
 
+Console.WriteLine("\n");
                                 // Probando la arquitecutra del sistema de items//
 ItemManager.cargarItems("JSON/Herramientas.JSON");
+string clave = "hacha_de_piedra";
+ItemManager.agregarItem(clave, jugador);
 
-string clave = "espada_de_piedra";
+                                 // Probando la arquitectura de habilidades//
 
-if(ItemManager.catalago.TryGetValue(clave, out Item item))
-{
-    //Console.WriteLine($"[ITEM]: {item.nombre}");
-    //Console.WriteLine($"[ITEM]: {item.descripcion}");
-    //Console.WriteLine($"[ITEM CAPACIDADES]: {item.capacidades.Count}");
-
-    foreach (var capacidad in item.capacidades)
-    {
-        //Console.WriteLine($"Tipo de lógica: {capacidad.GetType().Name}");
-
-        if (capacidad is CapacidadAtaque ataque) { } //Console.WriteLine($"      * Daño detectado: {ataque.danio}");
-        if (capacidad is CapacidadTalar talar) { } //Console.WriteLine($"      * Potencia detectada: {talar.potencia}");
-        if (capacidad is CapacidadComestible comestible) { } //Console.WriteLine($"      * energía detectada: {comestible.energia}");
-    }
-    jugador.objetos.Add(clave, item);
-}
-else
-{
-    Console.WriteLine($"ERROR: No se encontró el ID {clave} en el catálogo.");
-}
-                                 // Probando la arquitecutra del sistema de items//
-
+Console.WriteLine("\n");
 Console.WriteLine($"Nombre del jugador: {jugador.nombre}");
 jugador.aprenderHabilidad(HabilidadFactory.crearHabilidad("Ataque"));
 jugador.aprenderHabilidad(HabilidadFactory.crearHabilidad("Agricultura"));
@@ -70,10 +54,11 @@ var habAtaque = jugador.obtenerHabilidad<HabilidadAtaque>();
 var habComercio = jugador.obtenerHabilidad<HabilidadComercio>(); 
 var habAgricultura = jugador.obtenerHabilidad<HabilidadAgricultura>();
 
-Console.WriteLine($"Habilidades aprendidas: {hab} - {habAtaque.tipo} {habAtaque.descripcion} ");
+Console.WriteLine($"Habilidades aprendidas: {hab} \n{habAtaque.tipo} {habAtaque.descripcion} ");
 Console.WriteLine($"{habComercio.tipo} {habComercio.descripcion}");
 Console.WriteLine($"{habAgricultura.tipo} {habAgricultura.descripcion}");
 
+Console.WriteLine("\n");
 Console.WriteLine("Items del jugador:");
 int itemsInventario = jugador.objetos.Count;
 Console.WriteLine($"Total: {itemsInventario}");

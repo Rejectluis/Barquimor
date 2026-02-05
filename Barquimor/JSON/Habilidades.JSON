@@ -1,0 +1,28 @@
+[
+    {
+        "id": "habilidad_ataque",
+        "nombre": "¡Ataque físico!",
+        "descripcion": "Permite atacar con arma equipada",
+        "tipoDeLogica": [
+            {"tipo": "AtaqueJugadorLogic"}
+        ]
+    },
+
+    {
+        "id": "habilidad_agricultura",
+        "nombre": "¡Habilidad de agricultura desbloqueada!",
+        "descripcion": "Ahora puedes cultivar en tu huerto",
+        "tipoDeLogica": [
+            {"tipo": "SistemaDeAgriculturaNPCLogic"}
+        ]
+    },
+    
+    {
+        "id": "habilidad_comerciante",
+        "nombre": "¡Ahora eres comerciante!",
+        "descripcion": "Puedes comerciar con el pueblo y los mercantes.",
+        "tipoDeLogica": [
+            {"tipo": "SistemaDeComercioNPCLogic"}
+        ]
+    }
+]

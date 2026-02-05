@@ -31,6 +31,9 @@
     <Folder Include="Entidades\Estáticas\" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="JSON\Habilidades.JSON">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="JSON\Herramientas.JSON">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
