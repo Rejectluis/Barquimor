@@ -12,7 +12,7 @@ namespace Barquimor.Entidades.Plantillas
 {
     internal abstract class PersonajeBase : IActualizar
     {
-        public Dictionary<Type, Object> habilidades {  get; set; }
+        public Dictionary<Type, Object> habilidades { get; set; }
         public Dictionary<string, Item> objetos { get; set; }
         public string nombre { get; set; }
         protected int vida { get; set; }
@@ -54,6 +54,7 @@ namespace Barquimor.Entidades.Plantillas
             if (habilidades.ContainsKey(tipo)) { return; }
 
             habilidades.Add(tipo, nuevaHabilidad);
+
         }
 
         public T obtenerHabilidad<T>() where T : class
@@ -61,7 +62,11 @@ namespace Barquimor.Entidades.Plantillas
             if (habilidades.TryGetValue(typeof(T), out object habilidad)) { return habilidad as T; }
 
             return null;
+
         }
+
+
+
 
 
 

@@ -40,7 +40,7 @@ ItemManager.cargarItems("JSON/Herramientas.JSON");
 string clave = "calabaza_base";
 ItemManager.agregarItem(clave, jugador);
 
-                                 // Probando la arquitectura de habilidades//
+                                 // Probando la arquitectura de logicas//
 
 Console.WriteLine("\n");
 Console.WriteLine($"Nombre del jugador: {jugador.nombre}");
@@ -51,7 +51,7 @@ jugador.aprenderHabilidad(HabilidadFactory.crearHabilidad("Comercio"));
 int hab = jugador.habilidades.Count;
 
 var habAtaque = jugador.obtenerHabilidad<HabilidadAtaque>();
-var habComercio = jugador.obtenerHabilidad<HabilidadComercio>(); 
+var habComercio = jugador.obtenerHabilidad<HabilidadComercio>();
 var habAgricultura = jugador.obtenerHabilidad<HabilidadAgricultura>();
 
 Console.WriteLine($"Habilidades aprendidas: {hab} \n{habAtaque.tipo} {habAtaque.descripcion} ");

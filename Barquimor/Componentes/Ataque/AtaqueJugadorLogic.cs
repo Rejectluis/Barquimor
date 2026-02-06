@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Barquimor.Componentes.Ataque
 {
-    internal class AtaqueJugadorLogic : IAtacar, IHabilidad
+    internal class AtaqueJugadorLogic : IAtacar
     {
         public virtual void atacar()
         {

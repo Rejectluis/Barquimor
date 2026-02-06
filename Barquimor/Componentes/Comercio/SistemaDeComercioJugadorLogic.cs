@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Barquimor.Componentes.Comercio
 {
-    internal class SistemaDeComercioJugadorLogic : IComerciar, IHabilidad
+    internal class SistemaDeComercioJugadorLogic : IComerciar
     {
 
         public void comercioHabilitado()
