@@ -1,4 +1,5 @@
 ﻿using Barquimor.Core;
+using Barquimor.Habilidades.CreadorDeHabilidades;
 using Barquimor.Items.Items;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -12,7 +13,7 @@ namespace Barquimor.Entidades.Plantillas
 {
     internal abstract class PersonajeBase : IActualizar
     {
-        public Dictionary<Type, Object> habilidades { get; set; }
+        public Dictionary<string, IHabilidad> habilidades { get; set; }
         public Dictionary<string, Item> objetos { get; set; }
         public string nombre { get; set; }
         protected int vida { get; set; }
@@ -30,7 +31,7 @@ namespace Barquimor.Entidades.Plantillas
             this.velocidad = Vector2.Zero;
             this.renderizador = renderizador;
             this.colision = colision;
-            this.habilidades = new Dictionary<Type, Object>();
+            this.habilidades = new Dictionary<string, IHabilidad>();
             this.objetos = new Dictionary<string, Item>();
         }
 
@@ -49,23 +50,29 @@ namespace Barquimor.Entidades.Plantillas
 
         public void aprenderHabilidad(IHabilidad nuevaHabilidad)
         {
-            var tipo = nuevaHabilidad.GetType();
+            if (nuevaHabilidad is HabBase hab) 
+            {
+                if (habilidades.ContainsKey(hab.id)) { return; }
 
-            if (habilidades.ContainsKey(tipo)) { return; }
-
-            habilidades.Add(tipo, nuevaHabilidad);
+                habilidades.Add(hab.id, hab);
+            }
 
         }
 
         public T obtenerHabilidad<T>() where T : class
         {
-            if (habilidades.TryGetValue(typeof(T), out object habilidad)) { return habilidad as T; }
-
-            return null;
+            return habilidades.Values.OfType<T>().FirstOrDefault();
 
         }
 
-
+        public HabBase obtenerHabilidad(string idHabilidad)
+        {
+            if (habilidades.TryGetValue(idHabilidad, out var h))
+            {
+                return (HabBase)h;
+            }
+            return null;
+        }
 
 
 

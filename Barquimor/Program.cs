@@ -8,6 +8,7 @@ using Barquimor.Habilidades;
 using Barquimor.Habilidades.Agricultura;
 using Barquimor.Habilidades.Ataques;
 using Barquimor.Habilidades.Comercios;
+using Barquimor.Habilidades.CreadorDeHabilidades;
 using Barquimor.Items.Capacidades;
 using Barquimor.Items.Items;
 using System;
@@ -29,34 +30,39 @@ CarlosElHerrero.desactivarComercio();
 CarlosElHerrero.ejecutarRender();
 CarlosElHerrero.ejecutarColision();
 
-CarlosElHerrero.aprenderHabilidad(HabilidadFactory.crearHabilidad("Ataque"));
-CarlosElHerrero.aprenderHabilidad(HabilidadFactory.crearHabilidad("Agricultura"));
-CarlosElHerrero.obtenerHabilidad<HabilidadAtaque>().ejecutarHabilidad();
-CarlosElHerrero.obtenerHabilidad<HabilidadAgricultura>().ejecutarHabilidad();
+                                //  Inicialización de los JSON   //
+HabilidadManager.inicializar("JSON/Habilidades.JSON");
 
+                                // probando la lógica de habilidades en NPCS    //
+CarlosElHerrero.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_ataque"));
+CarlosElHerrero.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_agricultura"));
+
+                                // Probando la arquitecutra del sistema de items    //
 Console.WriteLine("\n");
-                                // Probando la arquitecutra del sistema de items//
 ItemManager.cargarItems("JSON/Herramientas.JSON");
 string clave = "calabaza_base";
 ItemManager.agregarItem(clave, jugador);
 
-                                 // Probando la arquitectura de logicas//
+                                 // Probando la arquitectura de logicas //
 
 Console.WriteLine("\n");
 Console.WriteLine($"Nombre del jugador: {jugador.nombre}");
-jugador.aprenderHabilidad(HabilidadFactory.crearHabilidad("Ataque"));
-jugador.aprenderHabilidad(HabilidadFactory.crearHabilidad("Agricultura"));
-jugador.aprenderHabilidad(HabilidadFactory.crearHabilidad("Comercio"));
+jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_ataque"));
+jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_agricultura"));
+jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_comerciante"));
+
 
 int hab = jugador.habilidades.Count;
 
-var habAtaque = jugador.obtenerHabilidad<HabilidadAtaque>();
-var habComercio = jugador.obtenerHabilidad<HabilidadComercio>();
-var habAgricultura = jugador.obtenerHabilidad<HabilidadAgricultura>();
+if (hab ==0) { Console.WriteLine("Las habilidades son cero. No se puede continuar con el programa."); Environment.Exit(0); }
 
-Console.WriteLine($"Habilidades aprendidas: {hab} \n{habAtaque.tipo} {habAtaque.descripcion} ");
-Console.WriteLine($"{habComercio.tipo} {habComercio.descripcion}");
-Console.WriteLine($"{habAgricultura.tipo} {habAgricultura.descripcion}");
+var habAtaque = jugador.obtenerHabilidad("habilidad_ataque");
+var habComercio = jugador.obtenerHabilidad("habilidad_comerciante");
+var habAgricultura = jugador.obtenerHabilidad("habilidad_agricultura");
+
+Console.WriteLine($"Habilidades aprendidas: {hab} \n{habAtaque.nombre} {habAtaque.descripcion} ");
+Console.WriteLine($"{habComercio.nombre} {habComercio.descripcion}");
+Console.WriteLine($"{habAgricultura.nombre} {habAgricultura.descripcion}");
 
 Console.WriteLine("\n");
 Console.WriteLine("Items del jugador:");
@@ -64,6 +70,8 @@ int itemsInventario = jugador.objetos.Count;
 Console.WriteLine($"Total: {itemsInventario}");
 Console.WriteLine($"{jugador.objetos[clave].nombre}: {jugador.objetos[clave].descripcion}");
 
-habAtaque.ejecutarHabilidad();
-habComercio.ejecutarHabilidad();
-habAgricultura.ejecutarHabilidad();
+Console.WriteLine("\n");
+
+jugador.obtenerHabilidad("habilidad_ataque").ejecutarHabilidad();
+jugador.obtenerHabilidad("habilidad_comerciante").ejecutarHabilidad();
+jugador.obtenerHabilidad("habilidad_agricultura").ejecutarHabilidad();

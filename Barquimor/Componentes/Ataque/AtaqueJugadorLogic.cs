@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Barquimor.Componentes.Ataque
 {
-    internal class AtaqueJugadorLogic : IAtacar
+    internal class AtaqueJugadorLogic : IAtacar, ILogicaHab
     {
         public virtual void atacar()
         {
             Console.WriteLine("¡Soy el jugador, y estoy atacando con mi esapda mamalona!");
         }
+
+        public void ejecutarLogica() => atacar();
     }
 }

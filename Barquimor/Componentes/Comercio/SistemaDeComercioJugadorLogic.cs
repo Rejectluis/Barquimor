@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Barquimor.Componentes.Comercio
 {
-    internal class SistemaDeComercioJugadorLogic : IComerciar
+    internal class SistemaDeComercioJugadorLogic : IComerciar, ILogicaHab
     {
 
         public void comercioHabilitado()
@@ -19,5 +19,7 @@ namespace Barquimor.Componentes.Comercio
         {
             Console.WriteLine("¡Soy el jugador y cerré el comercio!");
         }
+
+        public void ejecutarLogica() => comercioHabilitado();
     }
 }

@@ -13,7 +13,7 @@
         "nombre": "¡Habilidad de agricultura desbloqueada!",
         "descripcion": "Ahora puedes cultivar en tu huerto",
         "tipoDeLogica": [
-            {"tipo": "SistemaDeAgriculturaNPCLogic"}
+            {"tipo": "SistemaDeAgriculturaJugadorLogic"}
         ]
     },
     
@@ -22,7 +22,7 @@
         "nombre": "¡Ahora eres comerciante!",
         "descripcion": "Puedes comerciar con el pueblo y los mercantes.",
         "tipoDeLogica": [
-            {"tipo": "SistemaDeComercioNPCLogic"}
+            {"tipo": "SistemaDeComercioJugadorLogic"}
         ]
     }
 ]

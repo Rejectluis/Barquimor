@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+    /*
+    *  Esta clase está descontinuada. Ver explicación en la clase 'HabilidadBase'.
+    */
 namespace Barquimor.Habilidades.Comercios
 {
     internal class HabilidadComercio : HabilidadBase, IHabilidad

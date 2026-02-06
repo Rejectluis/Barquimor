@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Barquimor.Componentes.Agricultura
 {
-    internal class SistemaDeAgriculturaJugadorLogic : IAgricultura
+    internal class SistemaDeAgriculturaJugadorLogic : IAgricultura, ILogicaHab
     {
         public void cultivar()
         {
             Console.WriteLine("El jugador está cultivando");
         }
+
+        public void ejecutarLogica() => cultivar();
     }
 }

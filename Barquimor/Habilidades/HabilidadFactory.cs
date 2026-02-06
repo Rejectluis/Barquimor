@@ -18,7 +18,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+    
+    /*
+     *  Esta clas está descontinuada. Era la forma anterior para crear habilidades con el sistema de
+     *  herencia. Vaya a la clase 'HabilidadBase' para leer más al respecto.
+     */
 namespace Barquimor.Habilidades
 {
     internal class HabilidadFactory
