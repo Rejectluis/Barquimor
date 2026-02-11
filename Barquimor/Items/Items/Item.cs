@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Barquimor.Items.Capacidades;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,9 @@ namespace Barquimor.Items.Items
         public string nombre { get; set; }
         public string descripcion { get; set; }
         //public Texture2D textura { get; set; }
-        public List<ICapacidad> capacidades {get; set;} = new List<ICapacidad>(); 
+
+        public List<ICapacidad> capacidades {get; set;} = new List<ICapacidad>();
+        //public List<DTOCapacidad> capacidades { get; set; } = new List<DTOCapacidad>();
 
         public Item()
         {

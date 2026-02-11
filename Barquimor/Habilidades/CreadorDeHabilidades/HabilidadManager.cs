@@ -1,6 +1,7 @@
 ﻿using Barquimor.Componentes.Agricultura;
 using Barquimor.Componentes.Ataque;
 using Barquimor.Componentes.Comercio;
+using Barquimor.Componentes.Curativo;
 using Barquimor.Core;
 using Newtonsoft.Json;
 using System;
@@ -12,10 +13,10 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-    /*
-     *  Esta clase se encarga de crear una habilidad a partir de un archivo JSON. Sus métodos son
-     *  estáticos porque no se necesita una instancia, simplemente acceder a sus métodos.
-     */
+/*
+ *  Esta clase se encarga de crear una habilidad a partir de un archivo JSON. Sus métodos son
+ *  estáticos porque no se necesita una instancia, simplemente acceder a sus métodos.
+ */
 namespace Barquimor.Habilidades.CreadorDeHabilidades
 {
     internal class HabilidadManager
@@ -82,23 +83,29 @@ namespace Barquimor.Habilidades.CreadorDeHabilidades
                  */
                 switch (dtoLogica.tipo)
                 {
-                    case "AtaqueJugadorLogic": 
+                    case nameof(AtaqueJugadorLogic): 
                         logicaDeLaHabilidad = new AtaqueJugadorLogic();
                         nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
                         logicaDeLaHabilidad = null;
-                    break;
+                    continue;
 
-                    case "SistemaDeAgriculturaJugadorLogic":
+                    case nameof(SistemaDeAgriculturaJugadorLogic):
                         logicaDeLaHabilidad = new SistemaDeAgriculturaJugadorLogic();
                         nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
                         logicaDeLaHabilidad = null;
-                    break;
+                    continue;
 
-                    case "SistemaDeComercioJugadorLogic":
+                    case nameof(SistemaDeComercioJugadorLogic):
                         logicaDeLaHabilidad = new SistemaDeComercioJugadorLogic();
                         nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
                         logicaDeLaHabilidad = null;
-                    break;
+                    continue;
+
+                    case nameof(SistemaCurativoJugadorLogic):
+                        logicaDeLaHabilidad = new SistemaCurativoJugadorLogic();
+                        nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
+                        logicaDeLaHabilidad = null;
+                    continue;
                 }
             }
             return nuevaHabilidad;

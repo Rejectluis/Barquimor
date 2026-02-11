@@ -7,7 +7,7 @@ using System.Threading.Tasks;
     /*
      *  Esta clase está descontinuada. Representa la forma antigua de crear habilidades, donde cada 
      *  habilidad heredaba de habilidadBase. Actualmente, se usa una factory llamada 'HabilidadManager' 
-     *  para crear habilidades que pertenecen a una misma clase, y cuyos datos individuales vienen de 
+     *  para crear habilidades que pertenecen a una misma clase, pero cuyos datos individuales vienen de 
      *  un archivo json.
      *  
      *  No se ha borrado porque es muy reciente la transición entre habilidades por herencia y por json.

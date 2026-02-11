@@ -13,6 +13,7 @@ using Barquimor.Items.Capacidades;
 using Barquimor.Items.Items;
 using System;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 
 using var game = new Barquimor.Game1();
 //game.Run();
@@ -32,24 +33,27 @@ CarlosElHerrero.ejecutarColision();
 
                                 //  Inicialización de los JSON   //
 HabilidadManager.inicializar("JSON/Habilidades.JSON");
+ItemManager.inicializar("JSON/Herramientas.JSON");
 
-                                // probando la lógica de habilidades en NPCS    //
+// probando la lógica de habilidades en NPCS    //
 CarlosElHerrero.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_ataque"));
 CarlosElHerrero.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_agricultura"));
 
                                 // Probando la arquitecutra del sistema de items    //
 Console.WriteLine("\n");
-ItemManager.cargarItems("JSON/Herramientas.JSON");
-string clave = "calabaza_base";
+string clave = "hacha_de_piedra";
+ItemManager.crearItem(clave);
 ItemManager.agregarItem(clave, jugador);
 
-                                 // Probando la arquitectura de logicas //
+// Probando la arquitectura de logicas //
 
 Console.WriteLine("\n");
 Console.WriteLine($"Nombre del jugador: {jugador.nombre}");
 jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_ataque"));
 jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_agricultura"));
 jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_comerciante"));
+jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_curativa"));
+jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_especial"));
 
 
 int hab = jugador.habilidades.Count;
@@ -59,19 +63,24 @@ if (hab ==0) { Console.WriteLine("Las habilidades son cero. No se puede continua
 var habAtaque = jugador.obtenerHabilidad("habilidad_ataque");
 var habComercio = jugador.obtenerHabilidad("habilidad_comerciante");
 var habAgricultura = jugador.obtenerHabilidad("habilidad_agricultura");
+var habCurativa = jugador.obtenerHabilidad("habilidad_curativa");
+var habEspecial = jugador.obtenerHabilidad("habilidad_especial");
 
 Console.WriteLine($"Habilidades aprendidas: {hab} \n{habAtaque.nombre} {habAtaque.descripcion} ");
-Console.WriteLine($"{habComercio.nombre} {habComercio.descripcion}");
 Console.WriteLine($"{habAgricultura.nombre} {habAgricultura.descripcion}");
+Console.WriteLine($"{habComercio.nombre} {habComercio.descripcion}");
+Console.WriteLine($"{habCurativa.nombre} {habCurativa.descripcion}");
+Console.WriteLine($"{habEspecial.nombre} {habEspecial.descripcion}");
 
 Console.WriteLine("\n");
 Console.WriteLine("Items del jugador:");
-int itemsInventario = jugador.objetos.Count;
-Console.WriteLine($"Total: {itemsInventario}");
+Console.WriteLine($"Total: {jugador.objetos.Count}");
 Console.WriteLine($"{jugador.objetos[clave].nombre}: {jugador.objetos[clave].descripcion}");
 
 Console.WriteLine("\n");
 
 jugador.obtenerHabilidad("habilidad_ataque").ejecutarHabilidad();
-jugador.obtenerHabilidad("habilidad_comerciante").ejecutarHabilidad();
 jugador.obtenerHabilidad("habilidad_agricultura").ejecutarHabilidad();
+jugador.obtenerHabilidad("habilidad_comerciante").ejecutarHabilidad();
+jugador.obtenerHabilidad("habilidad_curativa").ejecutarHabilidad();
+jugador.obtenerHabilidad("habilidad_especial").ejecutarHabilidad();

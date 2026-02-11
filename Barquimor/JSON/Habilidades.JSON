@@ -16,13 +16,32 @@
             {"tipo": "SistemaDeAgriculturaJugadorLogic"}
         ]
     },
-    
-    {
-        "id": "habilidad_comerciante",
-        "nombre": "¡Ahora eres comerciante!",
-        "descripcion": "Puedes comerciar con el pueblo y los mercantes.",
-        "tipoDeLogica": [
-            {"tipo": "SistemaDeComercioJugadorLogic"}
-        ]
-    }
+
+  {
+    "id": "habilidad_comerciante",
+    "nombre": "¡Ahora eres comerciante!",
+    "descripcion": "Puedes comerciar con el pueblo y los mercantes.",
+    "tipoDeLogica": [
+      { "tipo": "SistemaDeComercioJugadorLogic" }
+    ]
+  },
+
+  {
+    "id": "habilidad_curativa",
+    "nombre": "!Bienvenido a la cruz roja¡",
+    "descripcion": "Puedes curarte más rápido ahora, incluso mientras atacas.",
+    "tipoDeLogica": [
+      { "tipo": "SistemaCurativoJugadorLogic" }
+    ]
+  },
+
+  {
+    "id": "habilidad_especial",
+    "nombre": "¡Atacante curativo!",
+    "descripcion": "Con cada ataque generas más daño, pero te consume más energía",
+    "tipoDeLogica": [
+      { "tipo": "AtaqueJugadorLogic" },
+      { "tipo": "SistemaCurativoJugadorLogic" }
+    ]
+  }
 ]
