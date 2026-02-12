@@ -20,70 +20,8 @@ namespace Barquimor.Items.Items
     internal class ItemManager : ManagerBase<Item, DTOItemRow>
     {
         public static ItemManager Instancia {  get; } = new ItemManager();
-        //public static Dictionary<string, DTOItemRow> planos = new();                        //  Contine los datos del JSON
         public static Dictionary<string, Item> catalago = new Dictionary<string, Item>();   //  Contiene los items instanciados 
         private ItemManager() { }
-
-        /*
-         * Es el encargado de inicializar el JSON. Simplemente lo lee y lo guarda en el diccionario
-         * 'planos'. Ahí se almacenan los datos del archivo para posteriormente buscar un id e
-         * instanciar un objeto.
-         */
-        //public static void inicializar(string rutaJson)
-        //{
-        //    string json = File.ReadAllText(rutaJson);
-        //    var datos = JsonConvert.DeserializeObject<List<DTOItemRow>>(json);
-
-        //    foreach(var item in datos )
-        //    {
-        //        planos[item.id] = item;
-        //    }
-        //}
-
-        /*
-         *  Este método se dividió en dos partes para comodidad. El método que verdaderamente crea
-         *  la habilidad se llama 'originarHabilidadDesdePlano', y está debajo de este.
-         *  
-         *  Su función es buscar el id en los planos. Si lo encuentra; llama al 
-         *  segundo método que realmente instancia una habilidad, si no; retorna un null.
-         */
-
-        //public static Item crearItem(string idItem)
-        //{
-        //    if (planos.TryGetValue(idItem, out var DTOitem)) { return originarItemDesdePlano(DTOitem); }
-
-        //    return null;
-        //}
-
-        /*
-         *  Este método instancia el item con los datos que se le envió desde la primera parte.
-         *  Luego evalúa cuáles son los tipos de lógica que posee el item, con base a eso 
-         *  los asigna al objeto.
-         *  
-         */
-        //private static Item originarItemDesdePlano(DTOItemRow item)
-        //{
-        //    Item nuevoItem = new Item
-        //    {
-        //        id = item.id,
-        //        nombre = item.nombre,
-        //        descripcion = item.descripcion,
-        //        capacidades = new()
-        //    };
-
-        //    foreach(var dto in item.capacidades)
-        //    {
-        //        if (dto.tipo.Equals("Ataque")) { nuevoItem.capacidades.Add(new CapacidadAtaque(dto.danio)); }
-
-        //        if (dto.tipo.Equals("Talar")) { nuevoItem.capacidades.Add(new CapacidadTalar(dto.potencia)); }
-
-        //        if (dto.tipo.Equals("Comestible")) { nuevoItem.capacidades.Add(new CapacidadComestible(dto.energia)); }
-        //    }
-        //    catalago.Add(item.id, nuevoItem);
-        //    return nuevoItem;
-        //}
-
-
         public override Item originarDesdePlano(DTOItemRow item)
         {
             Item nuevoItem = new Item
