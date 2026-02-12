@@ -46,8 +46,8 @@ namespace Barquimor.Entidades.Plantillas
         }
 
         /*
-         *  Este método instancia la habilidad con los datos que se le envió desde la primera parte.
-         *  Luego evalúa cuáles son los tipos de lógica que tiene la habilidad creada, con base a eso 
+         *  Este método instancia el objeto con los datos que se le envió desde la primera parte.
+         *  Luego evalúa cuáles son los tipos de lógicas que tiene el objeto creado, con base a eso 
          *  las asigna.
          */
         public abstract T_Objeto originarDesdePlano(T_DTO dtoHabilidad);

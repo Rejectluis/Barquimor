@@ -11,6 +11,17 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Habilidades\Agricultura\**" />
+    <Compile Remove="Habilidades\Atacar\**" />
+    <Compile Remove="Habilidades\Comerciar\**" />
+    <EmbeddedResource Remove="Habilidades\Agricultura\**" />
+    <EmbeddedResource Remove="Habilidades\Atacar\**" />
+    <EmbeddedResource Remove="Habilidades\Comerciar\**" />
+    <None Remove="Habilidades\Agricultura\**" />
+    <None Remove="Habilidades\Atacar\**" />
+    <None Remove="Habilidades\Comerciar\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
   </ItemGroup>
