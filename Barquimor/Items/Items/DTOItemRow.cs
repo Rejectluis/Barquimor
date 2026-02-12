@@ -1,4 +1,5 @@
-﻿using Barquimor.Items.Capacidades;
+﻿using Barquimor.Core;
+using Barquimor.Items.Capacidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Barquimor.Items.Items
     /*
      *  Esta clase representa el Item completo que viene en un JSON
      */ 
-    internal class DTOItemRow
+    internal class DTOItemRow : IDTOBase
     {
         public string id { get; set; }
         public string nombre { get; set; }

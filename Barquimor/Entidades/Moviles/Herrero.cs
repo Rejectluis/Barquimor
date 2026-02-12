@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Barquimor.Entidades.Moviles
 {
-    internal class Herrero : PersonajeComerciante
+    internal class Herrero : NPCComercianteBase
     {
         public Herrero(string nombre,IComerciar comercio, IDibujar renderizador, IColisionar colisionar) 
             : base(nombre, comercio, renderizador, colisionar)

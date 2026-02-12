@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace Barquimor.Entidades.Plantillas
 {
-    internal abstract class PersonajeComerciante : NPC
+    internal abstract class NPCComercianteBase : NPC
     {
 
         protected IComerciar logicaComercio;
 
-        protected PersonajeComerciante(string nombre, IComerciar logicaComercio, IDibujar renderizar, IColisionar colision)
+        protected NPCComercianteBase(string nombre, IComerciar logicaComercio, IDibujar renderizar, IColisionar colision)
             : base(nombre,renderizar,colision)
         {
             this.logicaComercio = logicaComercio;

@@ -3,6 +3,7 @@ using Barquimor.Componentes.Ataque;
 using Barquimor.Componentes.Comercio;
 using Barquimor.Componentes.Curativo;
 using Barquimor.Core;
+using Barquimor.Entidades.Plantillas;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,25 +20,28 @@ using System.Threading.Tasks;
  */
 namespace Barquimor.Habilidades.CreadorDeHabilidades
 {
-    internal class HabilidadManager
+    internal class HabilidadManager : ManagerBase<HabBase, DTOHabilidad>
     {
+        public static HabilidadManager Instancia {  get; } = new HabilidadManager();
         public static Dictionary<string, DTOHabilidad> planos = new();
+
+        private HabilidadManager() { }
 
         /*
          * Es el encargado de inicializar el JSON. Simplemente lo lee y lo guarda en el diccionario
          * 'planos'. Ahí se almacenan los datos del archivo para posteriormente buscar un id e
          * instanciar un objeto.
          */
-        public static void inicializar(string ruta)
-        {
-            string json = File.ReadAllText(ruta);
-            var datosJson = JsonConvert.DeserializeObject<List<DTOHabilidad>> (json);
+        //public static void inicializar(string ruta)
+        //{
+        //    string json = File.ReadAllText(ruta);
+        //    var datosJson = JsonConvert.DeserializeObject<List<DTOHabilidad>> (json);
 
-            foreach (var dto in datosJson)
-            {
-                planos[dto.id] = dto;
-            }
-        }
+        //    foreach (var dto in datosJson)
+        //    {
+        //        planos[dto.id] = dto;
+        //    }
+        //}
 
         /*
          *  Este método se dividió en dos partes para comodidad. El método que verdaderamente crea
@@ -46,13 +50,13 @@ namespace Barquimor.Habilidades.CreadorDeHabilidades
          *  Su función es buscar el id en el diccionario de habilidades, si lo encuentra llama al 
          *  segundo método que realmente instancia una habilidad, si no retorna un null.
          */
-        public static IHabilidad crearHabilidad(string idHabilidad)
-        {
-            if (!planos.TryGetValue(idHabilidad, out var dto)) { return null; }
+        //public static IHabilidad crearHabilidad(string idHabilidad)
+        //{
+        //    if (!planos.TryGetValue(idHabilidad, out var dto)) { return null; }
 
-            return originarHabilidadDesdePlano(dto);
+        //    return originarHabilidadDesdePlano(dto);
 
-        }
+        //}
 
         /*
          *  Este método instancia la habilidad con los datos que se le envió desde la primera parte.
@@ -60,7 +64,58 @@ namespace Barquimor.Habilidades.CreadorDeHabilidades
          *  las asigna.
          *  
          */
-        private static HabBase originarHabilidadDesdePlano(DTOHabilidad dtoHabilidad)
+        //private static HabBase originarHabilidadDesdePlano(DTOHabilidad dtoHabilidad)
+        //{
+        //    ILogicaHab logicaDeLaHabilidad;
+
+        //    HabBase nuevaHabilidad = new HabBase
+        //    {
+        //        id = dtoHabilidad.id,
+        //        nombre = dtoHabilidad.nombre,
+        //        descripcion = dtoHabilidad.descripcion,
+        //        nivel = 1,
+        //        experiencia = 0,
+        //        logicas = new()
+
+        //    };
+
+        //    foreach (var dtoLogica in dtoHabilidad.tipoDeLogica)
+        //    {
+        //        /*
+        //         *      Nota: Este switch es sólo para probar. A futuro, habría que cambiarlo y 
+        //         *      usar código más eficiente y limpio.
+        //         */
+        //        switch (dtoLogica.tipo)
+        //        {
+        //            case nameof(AtaqueJugadorLogic): 
+        //                logicaDeLaHabilidad = new AtaqueJugadorLogic();
+        //                nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
+        //                logicaDeLaHabilidad = null;
+        //            continue;
+
+        //            case nameof(SistemaDeAgriculturaJugadorLogic):
+        //                logicaDeLaHabilidad = new SistemaDeAgriculturaJugadorLogic();
+        //                nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
+        //                logicaDeLaHabilidad = null;
+        //            continue;
+
+        //            case nameof(SistemaDeComercioJugadorLogic):
+        //                logicaDeLaHabilidad = new SistemaDeComercioJugadorLogic();
+        //                nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
+        //                logicaDeLaHabilidad = null;
+        //            continue;
+
+        //            case nameof(SistemaCurativoJugadorLogic):
+        //                logicaDeLaHabilidad = new SistemaCurativoJugadorLogic();
+        //                nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
+        //                logicaDeLaHabilidad = null;
+        //            continue;
+        //        }
+        //    }
+        //    return nuevaHabilidad;
+        //}
+
+        public override HabBase originarDesdePlano(DTOHabilidad dtoHabilidad)
         {
             ILogicaHab logicaDeLaHabilidad;
 
@@ -83,29 +138,29 @@ namespace Barquimor.Habilidades.CreadorDeHabilidades
                  */
                 switch (dtoLogica.tipo)
                 {
-                    case nameof(AtaqueJugadorLogic): 
+                    case nameof(AtaqueJugadorLogic):
                         logicaDeLaHabilidad = new AtaqueJugadorLogic();
                         nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
                         logicaDeLaHabilidad = null;
-                    continue;
+                        continue;
 
                     case nameof(SistemaDeAgriculturaJugadorLogic):
                         logicaDeLaHabilidad = new SistemaDeAgriculturaJugadorLogic();
                         nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
                         logicaDeLaHabilidad = null;
-                    continue;
+                        continue;
 
                     case nameof(SistemaDeComercioJugadorLogic):
                         logicaDeLaHabilidad = new SistemaDeComercioJugadorLogic();
                         nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
                         logicaDeLaHabilidad = null;
-                    continue;
+                        continue;
 
                     case nameof(SistemaCurativoJugadorLogic):
                         logicaDeLaHabilidad = new SistemaCurativoJugadorLogic();
                         nuevaHabilidad.logicas.Add(logicaDeLaHabilidad.GetType(), logicaDeLaHabilidad);
                         logicaDeLaHabilidad = null;
-                    continue;
+                        continue;
                 }
             }
             return nuevaHabilidad;

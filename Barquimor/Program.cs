@@ -32,28 +32,27 @@ CarlosElHerrero.ejecutarRender();
 CarlosElHerrero.ejecutarColision();
 
                                 //  Inicialización de los JSON   //
-HabilidadManager.inicializar("JSON/Habilidades.JSON");
-ItemManager.inicializar("JSON/Herramientas.JSON");
+HabilidadManager.Instancia.inicializar("JSON/Habilidades.JSON");
+ItemManager.Instancia.inicializar("JSON/Herramientas.JSON");
 
 // probando la lógica de habilidades en NPCS    //
-CarlosElHerrero.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_ataque"));
-CarlosElHerrero.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_agricultura"));
+CarlosElHerrero.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_ataque"));
+CarlosElHerrero.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_agricultura"));
 
                                 // Probando la arquitecutra del sistema de items    //
 Console.WriteLine("\n");
 string clave = "hacha_de_piedra";
-ItemManager.crearItem(clave);
+ItemManager.Instancia.crear(clave);
 ItemManager.agregarItem(clave, jugador);
 
 // Probando la arquitectura de logicas //
-
 Console.WriteLine("\n");
 Console.WriteLine($"Nombre del jugador: {jugador.nombre}");
-jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_ataque"));
-jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_agricultura"));
-jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_comerciante"));
-jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_curativa"));
-jugador.aprenderHabilidad(HabilidadManager.crearHabilidad("habilidad_especial"));
+jugador.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_ataque"));
+jugador.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_agricultura"));
+jugador.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_comerciante"));
+jugador.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_curativa"));
+jugador.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_especial"));
 
 
 int hab = jugador.habilidades.Count;
