@@ -32,9 +32,11 @@ CarlosElHerrero.ejecutarColision();
 HabilidadManager.Instancia.inicializar("JSON/Habilidades.JSON");
 ItemManager.Instancia.inicializar("JSON/Herramientas.JSON");
 
-// probando la lógica de habilidades en NPCS    //
+                                // Probando el sistema de habilidades en los npc
 CarlosElHerrero.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_ataque"));
 CarlosElHerrero.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_agricultura"));
+CarlosElHerrero.obtenerHabilidad("habilidad_ataque").ejecutarHabilidad();
+CarlosElHerrero.obtenerHabilidad("habilidad_agricultura").ejecutarHabilidad();
 
                                 // Probando la arquitecutra del sistema de items    //
 Console.WriteLine("\n");
@@ -42,7 +44,7 @@ string clave = "hacha_de_piedra";
 ItemManager.Instancia.crear(clave);
 ItemManager.agregarItem(clave, jugador);
 
-// Probando la arquitectura de logicas //
+                                // Probando la arquitectura de habilidades en el jugador //
 Console.WriteLine("\n");
 Console.WriteLine($"Nombre del jugador: {jugador.nombre}");
 jugador.aprenderHabilidad(HabilidadManager.Instancia.crear("habilidad_ataque"));
